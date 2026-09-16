@@ -14,12 +14,12 @@
 ```python
 @dataclass
 class Note:
-    media: MediaInfo        # 视频信息：url/title/duration/cover/audio_path
+    media: MediaInfo  # 视频信息：url/title/duration/cover/audio_path
     transcript: Transcript  # 转写：full_text + segments(start,end,text)
-    outline: Outline        # 大纲：title + nodes(标题树，含 start 时间戳)
-    mindmap: str            # markmap 兼容的 markdown 思维导图文本
+    outline: Outline  # 大纲：title + nodes(标题树，含 start 时间戳)
+    mindmap: str  # markmap 兼容的 markdown 思维导图文本
     diagrams: list[DiagramSpec]  # 架构图，每个是 {title, mermaid}
-    ppt_path: str           # 生成的 slides.pptx 路径
+    ppt_path: str  # 生成的 slides.pptx 路径
 ```
 
 ## 分步模块

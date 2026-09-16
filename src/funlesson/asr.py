@@ -20,9 +20,7 @@ def transcribe(
     model = _get_model(model_name)
     result = model.transcribe(audio_path, language=language)
     segments = [
-        TranscriptSegment(
-            start=seg["start"], end=seg["end"], text=seg["text"].strip()
-        )
+        TranscriptSegment(start=seg["start"], end=seg["end"], text=seg["text"].strip())
         for seg in result.get("segments", [])
     ]
     return Transcript(full_text=result.get("text", "").strip(), segments=segments)

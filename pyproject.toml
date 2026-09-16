@@ -1,6 +1,6 @@
 [project]
 name = "funlesson"
-version = "0.1.0"
+version = "0.1.2"
 description = "funlesson 核心处理库：课程视频链接 -> 转写 -> 大纲 -> 思维导图/PPT/架构图"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -9,17 +9,37 @@ dependencies = [
     "yt-dlp",
     "python-pptx",
 ]
+license = "MIT"
 
 [[project.authors]]
-name = "niuliangtao"
-email = "farfarfun@qq.com"
+name = "牛哥"
+email = "niuliangtao@qq.com"
 
+[[project.authors]]
+name = "farfarfun"
+email = "farfarfun@qq.com"
+[[project.maintainers]]
+name = "牛哥"
+email = "niuliangtao@qq.com"
+
+[[project.maintainers]]
+name = "farfarfun"
+email = "farfarfun@qq.com"
+[project.urls]
+Organization = "https://github.com/farfarfun"
+Repository = "https://github.com/farfarfun/funlesson"
+Releases = "https://github.com/farfarfun/funlesson/releases"
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.setuptools]
-license-files = []
+
+[tool.uv]
+package = true
+[[tool.uv.index]]
+name = "packages-pypi"
+url = "https://packages.aliyun.com/5fc5eb115dbd287006145e5f/pypi/funpy"
 
 [dependency-groups]
 dev = [

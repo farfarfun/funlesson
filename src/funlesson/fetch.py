@@ -25,7 +25,11 @@ def _resolve_redirects(url: str) -> str:
         parts = urlsplit(current)
         if parts.scheme not in ("http", "https"):
             return url
-        conn_cls = http.client.HTTPSConnection if parts.scheme == "https" else http.client.HTTPConnection
+        conn_cls = (
+            http.client.HTTPSConnection
+            if parts.scheme == "https"
+            else http.client.HTTPConnection
+        )
         try:
             conn = conn_cls(parts.netloc, timeout=10)
             path = parts.path or "/"
@@ -43,7 +47,11 @@ def _resolve_redirects(url: str) -> str:
         location = resp.getheader("Location")
         if not location:
             return current
-        current = location if urlsplit(location).netloc else f"{parts.scheme}://{parts.netloc}{location}"
+        current = (
+            location
+            if urlsplit(location).netloc
+            else f"{parts.scheme}://{parts.netloc}{location}"
+        )
 
     return current
 
