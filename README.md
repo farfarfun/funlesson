@@ -16,13 +16,10 @@ funlesson 的核心处理库：把一条课程视频链接（B 站等）转成�
 
 ### 安装
 
-包发布在私有 index（组织私有 PyPI，非公开 pypi.org），需要组织账号密码（找管理员要，
-不要把密码提交进仓库）；该 index 不代理公网包，`funtalk` 等公开依赖需要额外指定公网 index：
+包发布在公开 pypi.org：
 
 ```bash
-pip install funlesson \
-    --index-url https://<user>:<password>@packages.aliyun.com/5fc5eb115dbd287006145e5f/pypi/funpy/simple/ \
-    --extra-index-url https://pypi.org/simple
+pip install funlesson
 ```
 
 从源码开发用可编辑模式：`pip install -e .`
