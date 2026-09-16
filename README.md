@@ -1,7 +1,7 @@
-# funlesson-api
+# funlesson
 
 funlesson 的核心处理库：把一条课程视频链接（B 站等）转成结构化图文教案素材——转写、大纲、思维导图、PPT、架构图。被
-[funlesson](https://github.com/farfarfun/funlesson) 后端服务封装调用。
+[funlesson-api](https://github.com/farfarfun/funlesson-api) 后端服务封装调用。
 
 ## 功能特性
 
@@ -17,8 +17,10 @@ funlesson 的核心处理库：把一条课程视频链接（B 站等）转成�
 ### 安装
 
 ```bash
-pip install -e .
+uv pip install funlesson    # 或 pip install funlesson
 ```
+
+从源码开发用可编辑模式：`pip install -e .`
 
 ### 环境要求
 
@@ -29,7 +31,7 @@ pip install -e .
 ### 运行
 
 ```python
-from funlesson_api import process
+from funlesson import process
 
 note = process("https://www.bilibili.com/video/BVxxxxxxxx", workdir="./data/demo")
 print(note.outline.title)

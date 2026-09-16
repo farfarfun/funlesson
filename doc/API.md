@@ -1,6 +1,6 @@
 # API 文档
 
-## `funlesson_api.process(url, workdir, on_progress=None) -> Note`
+## `funlesson.process(url, workdir, on_progress=None) -> Note`
 
 课程视频链接 -> 图文笔记全流程处理入口。
 
@@ -26,14 +26,14 @@ class Note:
 
 各步骤也可单独调用，方便测试或替换实现：
 
-- `funlesson_api.fetch.download(url, out_dir) -> MediaInfo`：yt-dlp 下载音频
-- `funlesson_api.asr.transcribe(audio_path) -> Transcript`：基于 `funtalk.asr.WhisperASR`
-- `funlesson_api.outline.build_outline(transcript) -> Outline`
-- `funlesson_api.mindmap.to_markmap(outline) -> str`
-- `funlesson_api.ppt.build_ppt(outline, out_path) -> str`
-- `funlesson_api.diagram.build_diagrams(outline, transcript) -> list[DiagramSpec]`
+- `funlesson.fetch.download(url, out_dir) -> MediaInfo`：yt-dlp 下载音频
+- `funlesson.asr.transcribe(audio_path) -> Transcript`：基于 `funtalk.asr.WhisperASR`
+- `funlesson.outline.build_outline(transcript) -> Outline`
+- `funlesson.mindmap.to_markmap(outline) -> str`
+- `funlesson.ppt.build_ppt(outline, out_path) -> str`
+- `funlesson.diagram.build_diagrams(outline, transcript) -> list[DiagramSpec]`
 
-## `funlesson_api.agent`
+## `funlesson.agent`
 
 内容理解相关步骤（`outline`/`ppt`/`diagram`）统一通过这里调用一次性的
 `claude -p` 任务，不依赖额外的 LLM API Key：
@@ -46,4 +46,4 @@ class Note:
 ## 依赖与环境要求
 
 - 系统需安装 `ffmpeg`（yt-dlp 音频提取、Whisper 转写都依赖它）
-- `funlesson_api.asr` 首次调用会触发 Whisper 模型下载，网络環境需能访问模型权重源
+- `funlesson.asr` 首次调用会触发 Whisper 模型下载，网络環境需能访问模型权重源

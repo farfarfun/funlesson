@@ -1,6 +1,6 @@
-from funlesson_api.mindmap import to_markmap
-from funlesson_api.models import Outline, OutlineNode
-from funlesson_api.outline import _parse_outline
+from funlesson.mindmap import to_markmap
+from funlesson.models import Outline, OutlineNode
+from funlesson.outline import _parse_outline
 
 
 def _sample_outline() -> Outline:
