@@ -11,15 +11,15 @@ from . import outline as outline_mod
 from . import ppt as ppt_mod
 from .models import Note
 
-ProgressCallback = Optional[Callable[[str], None]]
+ProgressCallback = Optional[Callable[[str, Optional[float]], None]]
 
 STEPS = ["fetch", "asr", "outline", "mindmap", "ppt", "diagram"]
 
 
 def process(url: str, workdir: str, on_progress: ProgressCallback = None) -> Note:
-    def report(step: str) -> None:
+    def report(step: str, percent: Optional[float] = None) -> None:
         if on_progress:
-            on_progress(step)
+            on_progress(step, percent)
 
     os.makedirs(workdir, exist_ok=True)
 
@@ -27,7 +27,9 @@ def process(url: str, workdir: str, on_progress: ProgressCallback = None) -> Not
     media = fetch_mod.download(url, workdir)
 
     report("asr")
-    transcript = asr_mod.transcribe(media.audio_path)
+    transcript = asr_mod.transcribe(
+        media.audio_path, on_progress=lambda p: report("asr", p)
+    )
 
     report("outline")
     outline = outline_mod.build_outline(transcript)
