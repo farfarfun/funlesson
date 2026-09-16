@@ -1,6 +1,6 @@
 [project]
 name = "funlesson"
-version = "0.1.8"
+version = "0.1.9"
 description = "funlesson 核心处理库：课程视频链接 -> 转写 -> 大纲 -> 思维导图/PPT/架构图"
 readme = "README.md"
 requires-python = ">=3.11"
